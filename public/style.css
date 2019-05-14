@@ -35,3 +35,9 @@ main {
   flex-direction: column;
   justify-content: center;
 }
+
+.link {
+  color: whitesmoke;
+  padding: 10px
+
+}
