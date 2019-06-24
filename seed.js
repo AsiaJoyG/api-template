@@ -1,33 +1,83 @@
 const {db} = require('./server/db')
 const {green, red} = require('chalk')
 
-const Candy = require('./server/db/models/Candy');
+const Recipe = require('./server/db/models/Recipes');
+const Ingredient = require('./server/db/models/Ingredients');
+const Cookbook = require('./server/db/models/Cookbook');
 
 // here's some sample candies to get you started
 // feel free to edit these or add your own!
-const candies = [{
-  name: 'Skittles',
-  description: 'Taste the rainbow',
-  quantity: 2,
-  imageUrl: 'https://target.scene7.com/is/image/Target/GUEST_3d2a8073-36e6-4cec-8c8c-872639105820?wid=488&hei=488&fmt=pjpeg'
+const recipes = [{
+  name: 'Rice Pudding',
+  description: 'Dessert Rice',
+
 }, {
-  name: 'KitKat',
-  description: 'Make the most of your break',
-  quantity: 5,
-  imageUrl: 'https://target.scene7.com/is/image/Target/GUEST_9766bfa7-3fcb-4f4c-9576-15e17ccc1044?wid=488&hei=488&fmt=pjpeg'
+  name: 'Apple Pie',
+  description: 'Even sweeter apples!',
+
 }, {
-  name: 'M&M',
-  description: 'Melts in your mouth, not in your hand',
-  quantity: 4,
-  imageUrl: 'http://www.ocsaccess.com/admin/clientfiles/ucsne/images/xlarge/mm%20choc.jpg'
+  name: 'Corn Bread',
+  description: 'corn you can make a sandwich with',
+
+}];
+
+
+
+
+const ingredients = [{
+  name: 'Apple',
+
+
+}, {
+  name: 'Corn',
+
+
+}, {
+  name: 'Rice',
+
+
+},{
+  name: 'Sugar'
+}];
+
+const contents = [{
+  recipeId: 1,
+  ingredientId: 3
+
+}, {
+  recipeId: 1,
+  ingredientId: 4
+
+
+}, {
+  recipeId: 2,
+  ingredientId: 1
+
+
+}, {
+  recipeId: 2,
+  ingredientId: 4
+
+
+}, {
+  recipeId: 3,
+  ingredientId: 2
+
+
 }];
 
 const seed = async () => {
   try {
     await db.sync({force: true})
 
-    await Promise.all(candies.map(candy => {
-      return Candy.create(candy);
+    await Promise.all(recipes.map(recipe => {
+      return Recipe.create(recipe);
+    }));
+    await Promise.all(ingredients.map(ing => {
+      return Ingredient.create(ing);
+    }));
+    await Promise.all(contents.map( content => {
+      return Cookbook.create(content);
     }));
 
     console.log(green('Seeding success!'))

@@ -1,5 +1,5 @@
 {
-  "name": "goodie-bag",
+  "name": "recipes-test",
   "version": "0.0.1",
   "description": "A review time project",
   "main": "main.js",
@@ -20,6 +20,7 @@
     "body-parser": "^1.18.2",
     "chalk": "^2.4.1",
     "express": "^4.14.0",
+    "nodemon": "^1.19.1",
     "pg": "^7.4.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",

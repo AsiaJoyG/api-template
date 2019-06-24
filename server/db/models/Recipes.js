@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../database");
 
-module.exports = db.define("candy", {
+module.exports = db.define("recipes", {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -16,8 +16,5 @@ module.exports = db.define("candy", {
       notEmpty: true
     }
   },
-  image: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
+ 
 });

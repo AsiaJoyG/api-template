@@ -1,7 +1,8 @@
+/* eslint-disable quotes */
 'use strict'
 
 const router = require('express').Router()
-const Candy = require("../db/models/Candy")
+const {Cookbook, Ingredients, Recipes} = require("../db/models")
 
 // Your routes go here!
 // NOTE: Any routes that you put here are ALREADY mounted on `/api`
@@ -19,10 +20,12 @@ const Candy = require("../db/models/Candy")
 // but you DON'T have a corresponding router, this piece of
 // middleware will generate a 404, and send it to your
 // error-handling endware!
-router.get("./candies", async (req, res, next) => {
+router.get("./recipes", async (req, res, next) => {
   try {
-  const candies = await Candy.findAll();
-  res.json(candies)
+  const recipes = await Recipes.findAll(
+    {include: [{model: Cookbook}]}
+  );
+  res.json(recipes)
   } catch (error) { next(error)
 
   }
